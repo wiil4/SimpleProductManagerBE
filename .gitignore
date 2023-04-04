@@ -1,0 +1,15 @@
+# Directories
+node_modules/
+dist/
+tmp/
+logs/
+
+# Files
+.env
+*.log
+npm-debug.log*
+
+# Editor files
+.vscode/
+.idea/
+*.swp
