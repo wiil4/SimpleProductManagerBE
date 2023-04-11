@@ -44,3 +44,36 @@ exports.updateProduct = async (req,res) =>{
         res.status(500).send('Error updating data ');
     }
 }
+
+exports.getProduct = async (req,res) =>{
+    try {
+        const product = await Product.findById({_id: req.params.id});
+
+        if(!product){
+            res.status(404).json({msg:'Product doesnt exist'});
+        }
+        res.json(product);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send('Error getting data');
+    }
+}
+
+exports.deleteProduct = async(req,res) =>{
+    try {
+        const product = await Product.findById({_id: req.params.id});
+
+        if(!product){
+            res.status(404).json({msg:'Product doesnt exist'});
+        }
+        
+        await Product.findByIdAndRemove({_id:req.params.id});
+        
+        res.json({msg: 'Correctly deleted'});
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send('Error trying to delete given data');
+        
+    }
+}
