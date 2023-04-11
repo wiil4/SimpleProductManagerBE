@@ -1,12 +1,15 @@
 const express = require('express');
 const {DBconnection} = require('./config/db');
 const product = require('./routes/product');
+const cors = require('cors');
 
 //Server Created
 const app = express();
 const port = 4000;
 
 DBconnection().then(()=>{
+
+    app.use(cors());
 
     app.use(express.json());
 
