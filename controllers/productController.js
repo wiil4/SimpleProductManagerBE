@@ -73,7 +73,6 @@ exports.deleteProduct = async(req,res) =>{
 
     } catch (error) {
         console.log(error.message);
-        res.status(500).send('Error trying to delete given data');
-        
+        res.status(500).send('Error trying to delete given data');        
     }
 }
